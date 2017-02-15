@@ -1,0 +1,7 @@
+[package]
+name = "pennereq"
+version = "0.1.0"
+authors = ["arturo castro <arturo@openframeworks.cc>"]
+
+[dependencies]
+num="0.1"
