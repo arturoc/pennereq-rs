@@ -2,6 +2,7 @@
 name = "pennereq"
 version = "0.1.0"
 authors = ["arturo castro <arturo@openframeworks.cc>"]
+repository = "https://github.com/arturoc/pennereq-rs"
 
 [dependencies]
 num="0.1"
