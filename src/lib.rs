@@ -4,19 +4,19 @@ pub mod quad{
     use num::{Float,one};
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d;
         c * t * t + b
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d;
         -c * t * (t - From::from(2.)) + b
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let one = one::<T>();
         let two = From::from(2.);
         let t = t / (d / two);
@@ -33,19 +33,19 @@ pub mod cubic{
     use num::{Float,one};
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d;
         c * t * t * t + b
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d - one();
         c * (t * t * t + one()) + b
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let one = one::<T>();
         let two = From::from(2.);
         let t = t / (d / two);
@@ -62,19 +62,19 @@ pub mod quart{
     use num::{Float,one};
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d;
         c * t * t * t * t + b
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d - one();
         -c * (t * t * t * t - one()) + b
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let one = one::<T>();
         let two = From::from(2.);
         let t = t / (d / two);
@@ -91,19 +91,19 @@ pub mod quint{
     use num::{Float,one};
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d;
         c * t * t * t * t * t + b
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d - one();
         c * (t * t * t * t * t + one()) + b
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let one = one::<T>();
         let two = From::from(2.);
         let t = t / (d / two);
@@ -121,21 +121,21 @@ pub mod sine{
     use std::f64::consts::PI;
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let pi: T = From::from(PI);
         let two: T = From::from(2.);
         -c * (t / d * pi / two).cos() + c + b
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let pi: T = From::from(PI);
         let two: T = From::from(2.);
         c * (t / d * pi / two).sin() + b
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let pi: T = From::from(PI);
         let two: T = From::from(2.);
         -c / two * ((pi * t / d).cos() - one()) + b
@@ -146,7 +146,7 @@ pub mod expo{
     use num::{Float,one,zero};
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let two: T = From::from(2.);
         let ten: T = From::from(10.);
         if t == zero() {
@@ -157,7 +157,7 @@ pub mod expo{
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let two: T = From::from(2.);
         let ten: T = From::from(10.);
         if t == d{
@@ -168,7 +168,7 @@ pub mod expo{
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let two: T = From::from(2.);
         let ten: T = From::from(10.);
         if t == zero() { b }
@@ -188,19 +188,19 @@ pub mod circ{
     use num::{Float,one};
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d;
         -c * ((one::<T>() - t * t).sqrt() - one()) + b
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d - one();
         c * (one::<T>() - t * t).sqrt() + b
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let one = one::<T>();
         let two = From::from(2.);
         let t = t / (d / two);
@@ -218,7 +218,7 @@ pub mod elastic {
     use std::f64::consts::PI;
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         if t == zero() { return b };
 
         let pi: T = From::from(PI);
@@ -244,7 +244,7 @@ pub mod elastic {
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         if t == zero() { return b };
 
         let a: T = c;
@@ -270,7 +270,7 @@ pub mod elastic {
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         if t == zero() { return b };
 
         let a: T = c;
@@ -307,12 +307,12 @@ pub mod back{
     static DEFAULT_S: f64 = 1.70158;
 
     #[inline]
-    fn default_s<T: From<f64>>() -> T {
+    fn default_s<T: From<f32>>() -> T {
         From::from(DEFAULT_S)
     }
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         ease_in_s(t, b, c, d, default_s())
     }
 
@@ -323,7 +323,7 @@ pub mod back{
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         ease_out_s(t, b, c, d, default_s())
     }
 
@@ -334,12 +334,12 @@ pub mod back{
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         ease_in_out_s(t, b, c, d, default_s())
     }
 
     #[inline]
-    pub fn ease_in_out_s<T:Float + From<f64>>(t: T, b: T, c: T, d: T, s: T) -> T {
+    pub fn ease_in_out_s<T:Float + From<f32>>(t: T, b: T, c: T, d: T, s: T) -> T {
         let s = s * From::from(1.525);
         let two = From::from(2.);
         let t = t / ( d / two );
@@ -356,12 +356,12 @@ pub mod bounce{
     use num::{Float,one,zero};
 
     #[inline]
-    pub fn ease_in<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         c - ease_out(d-t, zero(), c, d) + b
     }
 
     #[inline]
-    pub fn ease_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         let t = t / d;
         let one: T = one();
         let two: T = From::from(2.);
@@ -386,7 +386,7 @@ pub mod bounce{
     }
 
     #[inline]
-    pub fn ease_in_out<T:Float + From<f64>>(t: T, b: T, c: T, d: T) -> T {
+    pub fn ease_in_out<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
         if t < d / From::from(2.){
             ease_in(t * From::from(2.), zero(), c, d) * From::from(0.5) + b
         }else{
