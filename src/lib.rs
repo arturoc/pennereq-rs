@@ -118,7 +118,7 @@ pub mod quint{
 
 pub mod sine{
     use num::{Float,one};
-    use std::f64::consts::PI;
+    use std::f32::consts::PI;
 
     #[inline]
     pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
@@ -215,7 +215,7 @@ pub mod circ{
 
 pub mod elastic {
     use num::{Float,one,zero};
-    use std::f64::consts::PI;
+    use std::f32::consts::PI;
 
     #[inline]
     pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
@@ -304,7 +304,7 @@ pub mod elastic {
 pub mod back{
     use num::{Float,one};
 
-    static DEFAULT_S: f64 = 1.70158;
+    static DEFAULT_S: f32 = 1.70158;
 
     #[inline]
     fn default_s<T: From<f32>>() -> T {
