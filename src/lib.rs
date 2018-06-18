@@ -1,7 +1,7 @@
-extern crate num;
+extern crate num_traits;
 
 pub mod quad{
-    use num::{Float,one};
+    use num_traits::{Float,one};
 
     #[inline]
     pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
@@ -30,7 +30,7 @@ pub mod quad{
 }
 
 pub mod cubic{
-    use num::{Float,one};
+    use num_traits::{Float,one};
 
     #[inline]
     pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
@@ -59,7 +59,7 @@ pub mod cubic{
 }
 
 pub mod quart{
-    use num::{Float,one};
+    use num_traits::{Float,one};
 
     #[inline]
     pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
@@ -88,7 +88,7 @@ pub mod quart{
 }
 
 pub mod quint{
-    use num::{Float,one};
+    use num_traits::{Float,one};
 
     #[inline]
     pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
@@ -117,7 +117,7 @@ pub mod quint{
 }
 
 pub mod sine{
-    use num::{Float,one};
+    use num_traits::{Float,one};
     use std::f32::consts::PI;
 
     #[inline]
@@ -143,7 +143,7 @@ pub mod sine{
 }
 
 pub mod expo{
-    use num::{Float,one,zero};
+    use num_traits::{Float,one,zero};
 
     #[inline]
     pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
@@ -185,7 +185,7 @@ pub mod expo{
 }
 
 pub mod circ{
-    use num::{Float,one};
+    use num_traits::{Float,one};
 
     #[inline]
     pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {
@@ -214,7 +214,7 @@ pub mod circ{
 }
 
 pub mod elastic {
-    use num::{Float,one,zero};
+    use num_traits::{Float,one,zero};
     use std::f32::consts::PI;
 
     #[inline]
@@ -302,7 +302,7 @@ pub mod elastic {
 }
 
 pub mod back{
-    use num::{Float,one};
+    use num_traits::{Float,one};
 
     static DEFAULT_S: f32 = 1.70158;
 
@@ -353,7 +353,7 @@ pub mod back{
 }
 
 pub mod bounce{
-    use num::{Float,one,zero};
+    use num_traits::{Float,one,zero};
 
     #[inline]
     pub fn ease_in<T:Float + From<f32>>(t: T, b: T, c: T, d: T) -> T {

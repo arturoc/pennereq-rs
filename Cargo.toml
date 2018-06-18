@@ -1,6 +1,6 @@
 [package]
 name = "pennereq"
-version = "0.2.0"
+version = "0.3.0"
 authors = ["arturo castro <arturo@openframeworks.cc>"]
 repository = "https://github.com/arturoc/pennereq-rs"
 description = "Port of the Penner easing equations to rust"
@@ -8,4 +8,4 @@ license="BSD-2-Clause"
 readme="README.md"
 
 [dependencies]
-num="0.1"
+num-traits="0.2"
