@@ -1,5 +1,8 @@
 extern crate num_traits;
 
+use std::ops::{Sub, Add};
+use num_traits::Zero;
+
 pub mod quad{
     use num_traits::{Float,one};
 
@@ -392,5 +395,90 @@ pub mod bounce{
         }else{
             ease_out(t * From::from(2.) - d, zero(), c, d)  * From::from(0.5) + c  * From::from(0.5) + b
         }
+    }
+}
+
+fn clamp<T>(v: T, min: T, max: T) -> T
+where T: PartialOrd
+{
+    if v < min{
+        min
+    }else if v > max{
+        max
+    }else{
+        v
+    }
+}
+
+/// Maps a value from an input range to an output range
+pub fn map<T,E>(value: T, mut inmin: T, mut inmax: T, mut outmin: T, mut outmax: T, eq: E) -> T
+where
+    T: PartialOrd + Sub<T, Output = T> + Add<T, Output = T> + Copy + Zero,
+    E: FnOnce(T,T,T,T) -> T
+{
+    if inmin > inmax {
+        std::mem::swap(&mut inmin, &mut inmax);
+    }
+    let reverse = if outmin > outmax {
+        std::mem::swap(&mut outmin, &mut outmax);
+        true
+    }else{
+        false
+    };
+    let t = value - inmin;
+    let duration = inmax - inmin;
+    let from = outmin;
+    let distance = outmax - outmin;
+    if reverse {
+        outmin + outmax - eq(
+            t,
+            from,
+            distance,
+            duration,
+        )
+    }else{
+        eq(
+            t,
+            from,
+            distance,
+            duration,
+        )
+    }
+}
+
+/// Maps a value from an input range to an output range clamping both the input and output
+/// to the corresponding ranges
+pub fn map_clamp<T,E>(value: T, mut inmin: T, mut inmax: T, mut outmin: T, mut outmax: T, eq: E) -> T
+where
+    T: PartialOrd + Sub<T, Output = T> + Add<T, Output = T> + Copy + Zero,
+    E: FnOnce(T,T,T,T) -> T
+{
+    if inmin > inmax {
+        std::mem::swap(&mut inmin, &mut inmax);
+    }
+    let reverse = if outmin > outmax {
+        std::mem::swap(&mut outmin, &mut outmax);
+        true
+    }else{
+        false
+    };
+    let t = value - inmin;
+    let duration = inmax - inmin;
+    let from = outmin;
+    let distance = outmax - outmin;
+    if reverse {
+        clamp(outmin + outmax - eq(
+            clamp(t, num_traits::zero(), duration),
+            from,
+            distance,
+            duration,
+        ), outmin, outmax)
+    }else{
+        clamp(eq(
+            clamp(t, num_traits::zero(), duration),
+            from,
+            distance,
+            duration,
+        ), outmin, outmax)
     }
 }
